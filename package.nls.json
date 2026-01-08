@@ -1,0 +1,5 @@
+{
+  "extension.description": "Detect duplicate entries in BibTeX files",
+  "command.checkSimilar.title": "Unique BibTeX: Check Similar Entries",
+  "config.similarityThreshold.description": "Similarity threshold for detecting similar entries (0.5-1.0)"
+}

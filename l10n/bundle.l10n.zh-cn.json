@@ -1,0 +1,7 @@
+{
+  "Extension activated": "扩展已激活",
+  "Please open a .bib file first": "请先打开一个 .bib 文件",
+  "Entry {0} has same title as \"{1}\" (line {2})": "条目 {0} 与 \"{1}\" 标题相同 (第 {2} 行)",
+  "Entry {0} is similar to \"{1}\" {2}% (line {3})": "条目 {0} 与 \"{1}\" 标题相似 {2}% (第 {3} 行)",
+  "Check complete, found {0} similar entries": "检测完成，发现 {0} 个相似条目"
+}

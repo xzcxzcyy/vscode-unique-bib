@@ -16,7 +16,7 @@ package-lock.json
 Thumbs.db
 
 # Editor directories
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

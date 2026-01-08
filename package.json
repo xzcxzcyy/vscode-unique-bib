@@ -1,7 +1,8 @@
 {
   "name": "vscode-unique-bib",
   "displayName": "Unique BibTeX",
-  "description": "检测 BibTeX 文件中的重复条目",
+  "description": "%extension.description%",
+  "l10n": "./l10n",
   "version": "0.0.1",
   "publisher": "xzcxzcyy",
   "engines": {
@@ -18,16 +19,33 @@
     "languages": [
       {
         "id": "bibtex",
-        "extensions": [".bib"],
-        "aliases": ["BibTeX", "bibtex"]
+        "extensions": [
+          ".bib"
+        ],
+        "aliases": [
+          "BibTeX",
+          "bibtex"
+        ]
       }
     ],
     "commands": [
       {
         "command": "uniqueBib.checkSimilar",
-        "title": "Unique BibTeX: 检测相似条目"
+        "title": "%command.checkSimilar.title%"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Unique BibTeX",
+      "properties": {
+        "uniqueBib.similarityThreshold": {
+          "type": "number",
+          "default": 0.9,
+          "minimum": 0.5,
+          "maximum": 1.0,
+          "description": "%config.similarityThreshold.description%"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

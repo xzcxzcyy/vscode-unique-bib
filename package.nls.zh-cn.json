@@ -1,0 +1,5 @@
+{
+  "extension.description": "检测 BibTeX 文件中的重复条目",
+  "command.checkSimilar.title": "Unique BibTeX: 检测相似条目",
+  "config.similarityThreshold.description": "相似度检测阈值 (0.5-1.0)"
+}

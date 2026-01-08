@@ -2,8 +2,10 @@ import * as vscode from 'vscode';
 import { parseBibTeX, BibEntry } from './bibParser';
 import { calculateSimilarity, normalizeTitle } from './similarity';
 
-// 相似度阈值（详细检测用）
-const SIMILARITY_THRESHOLD = 0.9;
+// 获取相似度阈值配置
+function getSimilarityThreshold(): number {
+    return vscode.workspace.getConfiguration('uniqueBib').get('similarityThreshold', 0.9);
+}
 
 // 诊断集合
 let diagnosticCollection: vscode.DiagnosticCollection;
@@ -12,7 +14,7 @@ let diagnosticCollection: vscode.DiagnosticCollection;
  * 扩展激活时调用
  */
 export function activate(context: vscode.ExtensionContext) {
-    console.log('Unique BibTeX 扩展已激活');
+    console.log(vscode.l10n.t('Extension activated'));
 
     diagnosticCollection = vscode.languages.createDiagnosticCollection('uniqueBib');
     context.subscriptions.push(diagnosticCollection);
@@ -41,7 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
             if (editor && isBibFile(editor.document)) {
                 checkSimilarDuplicates(editor.document);
             } else {
-                vscode.window.showWarningMessage('请先打开一个 .bib 文件');
+                vscode.window.showWarningMessage(vscode.l10n.t('Please open a .bib file first'));
             }
         })
     );
@@ -75,12 +77,9 @@ function checkExactDuplicates(document: vscode.TextDocument) {
         const existing = seen.get(normalized);
 
         if (existing) {
-            // 两个条目都标记警告
+            // 只标记后出现的条目，指向第一次出现的位置
             diagnostics.push(createDiagnostic(
-                document, entry, existing, 1, 'exact'
-            ));
-            diagnostics.push(createDiagnostic(
-                document, existing, entry, 1, 'exact'
+                document, entry, existing, 1
             ));
         } else {
             seen.set(normalized, entry);
@@ -96,9 +95,8 @@ function checkExactDuplicates(document: vscode.TextDocument) {
 function createDiagnostic(
     document: vscode.TextDocument,
     entry: BibEntry,
-    duplicate: BibEntry,
-    similarity: number,
-    type: 'exact' | 'similar'
+    firstEntry: BibEntry,
+    similarity: number
 ): vscode.Diagnostic {
     const line = entry.titleLine;
     const range = new vscode.Range(
@@ -106,10 +104,10 @@ function createDiagnostic(
         line, document.lineAt(line).text.length
     );
 
-    const percentage = (similarity * 100).toFixed(1);
-    const message = type === 'exact'
-        ? `"${entry.key}" 与 "${duplicate.key}" 标题相同`
-        : `"${entry.key}" 与 "${duplicate.key}" 标题相似 (${percentage}%)`;
+    const firstLine = firstEntry.titleLine + 1;
+    const message = similarity === 1
+        ? vscode.l10n.t('Entry {0} has same title as "{1}" (line {2})', entry.key, firstEntry.key, firstLine)
+        : vscode.l10n.t('Entry {0} is similar to "{1}" {2}% (line {3})', entry.key, firstEntry.key, (similarity * 100).toFixed(1), firstLine);
 
     const diagnostic = new vscode.Diagnostic(
         range,
@@ -135,12 +133,10 @@ function checkSimilarDuplicates(document: vscode.TextDocument) {
                 entries[j].title
             );
 
-            if (similarity >= SIMILARITY_THRESHOLD) {
+            if (similarity >= getSimilarityThreshold()) {
+                // 只标记后出现的条目 (entries[j])，指向先出现的 (entries[i])
                 diagnostics.push(createDiagnostic(
-                    document, entries[i], entries[j], similarity, 'similar'
-                ));
-                diagnostics.push(createDiagnostic(
-                    document, entries[j], entries[i], similarity, 'similar'
+                    document, entries[j], entries[i], similarity
                 ));
             }
         }
@@ -148,7 +144,7 @@ function checkSimilarDuplicates(document: vscode.TextDocument) {
 
     diagnosticCollection.set(document.uri, diagnostics);
     vscode.window.showInformationMessage(
-        `检测完成，发现 ${diagnostics.length / 2} 对相似条目`
+        vscode.l10n.t('Check complete, found {0} similar entries', diagnostics.length)
     );
 }
 

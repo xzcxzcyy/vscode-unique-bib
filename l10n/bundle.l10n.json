@@ -1,0 +1,7 @@
+{
+  "Extension activated": "Extension activated",
+  "Please open a .bib file first": "Please open a .bib file first",
+  "Entry {0} has same title as \"{1}\" (line {2})": "Entry {0} has same title as \"{1}\" (line {2})",
+  "Entry {0} is similar to \"{1}\" {2}% (line {3})": "Entry {0} is similar to \"{1}\" {2}% (line {3})",
+  "Check complete, found {0} similar entries": "Check complete, found {0} similar entries"
+}
