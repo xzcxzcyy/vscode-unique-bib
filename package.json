@@ -5,6 +5,10 @@
   "l10n": "./l10n",
   "version": "0.0.1",
   "publisher": "xzcxzcyy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xzcxzcyy/vscode-unique-bib"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
