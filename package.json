@@ -1,0 +1,42 @@
+{
+  "name": "vscode-unique-bib",
+  "displayName": "Unique BibTeX",
+  "description": "检测 BibTeX 文件中的重复条目",
+  "version": "0.0.1",
+  "publisher": "xzcxzcyy",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters"
+  ],
+  "activationEvents": [
+    "onLanguage:bibtex"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "bibtex",
+        "extensions": [".bib"],
+        "aliases": ["BibTeX", "bibtex"]
+      }
+    ],
+    "commands": [
+      {
+        "command": "uniqueBib.checkSimilar",
+        "title": "Unique BibTeX: 检测相似条目"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
