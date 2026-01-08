@@ -5,6 +5,9 @@
   "l10n": "./l10n",
   "version": "0.0.1",
   "publisher": "Banson",
+  "license": "MIT",
+  "author": "Banson",
+  "keywords": ["bibtex", "latex", "duplicate", "bibliography", "unique"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xzcxzcyy/vscode-unique-bib"
