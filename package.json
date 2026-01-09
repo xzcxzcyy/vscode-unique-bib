@@ -4,7 +4,7 @@
   "description": "%extension.description%",
   "icon": "./figures/icon.png",
   "l10n": "./l10n",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "Banson",
   "license": "MIT",
   "author": "Banson",
