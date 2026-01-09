@@ -2,6 +2,7 @@
   "name": "vscode-unique-bib",
   "displayName": "Unique BibTeX",
   "description": "%extension.description%",
+  "icon": "./figures/icon.png",
   "l10n": "./l10n",
   "version": "0.0.1",
   "publisher": "Banson",
