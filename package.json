@@ -4,11 +4,17 @@
   "description": "%extension.description%",
   "icon": "./figures/icon.png",
   "l10n": "./l10n",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "Banson",
   "license": "MIT",
   "author": "Banson",
-  "keywords": ["bibtex", "latex", "duplicate", "bibliography", "unique"],
+  "keywords": [
+    "bibtex",
+    "latex",
+    "duplicate",
+    "bibliography",
+    "unique"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xzcxzcyy/vscode-unique-bib"
@@ -49,7 +55,7 @@
           "type": "number",
           "default": 0.9,
           "minimum": 0.5,
-          "maximum": 1.0,
+          "maximum": 1,
           "description": "%config.similarityThreshold.description%"
         }
       }
