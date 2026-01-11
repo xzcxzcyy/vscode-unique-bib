@@ -11,7 +11,7 @@ A VSCode extension for detecting duplicate and similar entries in BibTeX files.
 
 ## Installation
 
-Search for "Unique BibTeX" in VSCode Extensions Marketplace, or install from VSIX file.
+Search for or click [UniqueBibTeX](https://marketplace.visualstudio.com/items?itemName=Banson.vscode-unique-bib) in VSCode Extensions Marketplace, or install from VSIX file.
 
 ## Usage
 

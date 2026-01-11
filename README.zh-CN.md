@@ -11,7 +11,7 @@
 
 ## 安装
 
-在 VSCode 扩展商店搜索 "Unique BibTeX"，或从 VSIX 文件安装。
+在 VSCode 扩展商店搜索或直接点击 [UniqueBibTeX](https://marketplace.visualstudio.com/items?itemName=Banson.vscode-unique-bib)，或从 VSIX 文件安装。
 
 ## 使用方法
 
